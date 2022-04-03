@@ -17,7 +17,17 @@
             <label for="description">Descrizione</label>
           <textarea class="form-control" id="description" name="description" rows="5">{{$post->description}}</textarea>
         </div>
-        <div class="text-right">
+        <select class="form-control" id="category" name="category_id">
+          <option value="">Nessuna Categoria</option>
+          @foreach ($categories as $category)
+            <option value="{{$category->id}}"
+             @if ($category->id == $post->category->id)
+                selected
+             @endif>
+            {{$category->label}}</option>
+          @endforeach
+        </select>
+        <div class="text-right mt-3">
             <button type="submit" class="btn btn-success">Modifica</button>
         </div>
       </form>
